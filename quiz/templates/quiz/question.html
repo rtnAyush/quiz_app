@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Question</title>
+</head>
+
+<body>
+    <h1>Question</h1>
+    <p>{{ text }}</p>
+
+    <form method="post" action="{% url 'submit_answer' session_id=session_id question_id=question_id %}">
+        {% csrf_token %}
+        
+        <!-- Loop through the options to display radio buttons -->
+        {% for key, value in options.items %}
+            <label>
+                <input required type="radio" name="answer" value="{{ key }}"> {{ key }}. {{ value }}
+            </label><br>
+        {% endfor %}
+        
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+
+</html>
