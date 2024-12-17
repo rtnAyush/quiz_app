@@ -1,5 +1,5 @@
 # Virtual environment
-clean_env/
+new_env/
 venv/
 ENV/
 env/
