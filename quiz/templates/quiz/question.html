@@ -1,26 +1,61 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Question</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create a Quiz App With Timer Using </title>
+    <link rel="stylesheet" href="{% static 'quiz/styles.css' %}">
+    <!-- FontAweome CDN Link for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
-    <h1>Question</h1>
-    <p>{{ text }}</p>
+    <!-- Quiz Box -->
+    <div class="quiz_box">
+        <header>
+            <div class="title">Quiz Application</div>
+            <div class="timer">
+                <div class="time_left_txt">Time Left</div>
+                <div class="timer_sec" id="countdown">15</div>
+            </div>
+            <!-- <div class="time_line"></div> -->
+        </header>
 
-    <form method="post" action="{% url 'submit_answer' session_id=session_id question_id=question_id %}">
-        {% csrf_token %}
-        
-        <!-- Loop through the options to display radio buttons -->
-        {% for key, value in options.items %}
-            <label>
-                <input required type="radio" name="answer" value="{{ key }}"> {{ key }}. {{ value }}
-            </label><br>
-        {% endfor %}
-        
-        <button type="submit">Submit Answer</button>
-    </form>
+        <form class="form-section" method="post"
+            action="{% url 'submit_answer' session_id=session_id question_id=question_id %}">
+            {% csrf_token %}
+            <div class="que_text">
+                {{ text }}
+            </div>
+
+            <div class="option_list">
+                <!-- Loop through the options to display radio buttons -->
+                {% for key, value in options.items %}
+
+                <label class="option hover" onclick="isClicked(this)" id="{{ key }}">
+                    <input required type="radio" name="answer" value="{{ key }}">
+                    <span>{{ key }}. {{ value }}</span>
+                </label>
+
+
+                {% endfor %}
+            </div>
+
+
+            <footer class="footer-btn">
+                <button class="" type="submit">Submit Answer</button>
+            </footer>
+
+        </form>
+
+
+    </div>
+
+
+
+    <script src="{% static 'quiz/js/timer.js' %}"></script>
 </body>
 
 </html>

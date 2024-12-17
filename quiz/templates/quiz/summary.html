@@ -1,16 +1,70 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Quiz Summary</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create a Quiz App With Timer Using </title>
+    <link rel="stylesheet" href="{% static 'quiz/styles.css' %}">
+    <!-- FontAweome CDN Link for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
-    <h1>Quiz Summary</h1>
-    <p>Total Questions Answered: {{ total_questions_answered }}</p>
-    <p>Correct Answers: {{ correct_answers }}</p>
-    <p>Incorrect Answers: {{ incorrect_answers }}</p>
-    <a href="/start/">Start New Quiz</a>
+    <!-- Result Box -->
+    <div class="result_box">
+        <h1>Quiz Summary</h1>
+        <!-- <p>Total Questions Answered: {{ total_questions_answered }}</p>
+        <p>Correct Answers: {{ correct_answers }}</p>
+        <p>Incorrect Answers: {{ incorrect_answers }}</p> -->
+        <div class="icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="complete_text">You've completed the Quiz!</div>
+        <div class="score_text">
+
+            <!-- <span>and congrats! 🎉, You got <p>{{ correct_answers }}</p> out of <p>{{ total_questions_answered }}
+                </p></span>
+
+            <span>and nice 😎, You got <p>{{ correct_answers }}</p> out of <p>{{ total_questions_answered }}</p>
+            </span>
+
+            <span>and sorry 😐, You got only <p>{{ correct_answers }}</p> out of <p>{{ total_questions_answered }}
+                </p></span> -->
+
+            <!-- <div class="result-message"> -->
+            {% with correct_answers|floatformat:0 as correct %}
+            {% with total_questions_answered|floatformat:0 as total %}
+            {% with correct|divisibleby:total as percentage %}
+
+            {% if percentage >= 80 %}
+            <span>🎉 Congrats! You got <p>{{ correct_answers }}</p> out of <p>{{
+                    total_questions_answered }}</p>!</span>
+            {% elif percentage >= 50 %}
+            <span>😎 Nice! You got <p>{{ correct_answers }}</p> out of <p>{{ total_questions_answered
+                    }}</p>.</span>
+            {% else %}
+            <span>😐 Sorry! You got only <p>{{ correct_answers }}</p> out of <p>{{ total_questions_answered }}</p>
+                .</span>
+            {% endif %}
+
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            <!-- </div> -->
+
+
+        </div>
+        <div class="buttons">
+            <a href="/"><button class="quit">Home</button></a>
+            <!-- <button class="restart">Replay Quiz</button>
+             -->
+        </div>
+    </div>
+
+    <script src="{% static 'quiz/js/script.js' %}"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -10,6 +10,87 @@
     <p>The correct option was: {{ correct_option }}</p>
     <a href="/question/{{ session_id }}/">Next Question</a>
     <a href="/summary/{{ session_id }}/">View Summary</a>
+</body>
+
+</html> -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create a Quiz App With Timer Using </title>
+    <link rel="stylesheet" href="{% static 'quiz/styles.css' %}">
+    <!-- FontAweome CDN Link for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <!-- Quiz Box -->
+    <div class="quiz_box">
+        <header>
+            <div class="title">Quiz Result</div>
+            <!-- <div class="timer">
+                <div class="time_left_txt">Time Left</div>
+                <div class="timer_sec">15</div>
+            </div> -->
+            <div class="time_line"></div>
+        </header>
+
+        <section class="form-section">
+
+            <div class="que_text">
+                {{ text }}
+            </div>
+
+            <div class="option_list">
+                <!-- Loop through the options to display radio buttons -->
+                {% for key, value in options.items %}
+
+                {% if key == correct_option|capfirst %}
+                <!-- Case: This option is the correct answer -->
+                <label class="option correct" id="{{ key }}">
+                    <span>{{ key }}. {{ value|capfirst }}</span>
+                    <div class="icon tick"><i class="fas fa-check"></i></div>
+                </label>
+                {% elif key == result|capfirst %}
+                <!-- Case: This option is the user's choice, but it's incorrect -->
+                <label class="option incorrect" id="{{ key }}">
+                    <span>{{ key }}. {{ value|capfirst }}</span>
+                    <div class="icon cross"><i class="fas fa-times"></i></div>
+                </label>
+                {% else %}
+                <!-- Case: All other options -->
+                <label class="option" id="{{ key }}">
+                    <span>{{ key }}. {{ value|capfirst }}</span>
+                </label>
+                {% endif %}
+
+
+                {% endfor %}
+            </div>
+
+
+            <footer class="footer-btn">
+
+                <a href="/question/{{ session_id }}/">
+                    <button>Next Question</button>
+                </a>
+                <a href="/summary/{{ session_id }}/">
+                    <button>View Summary</button></a>
+            </footer>
+
+        </section>
+
+
+    </div>
+
+
+
+    <script src="{% static 'quiz/js/script.js' %}"></script>
 </body>
 
 </html>

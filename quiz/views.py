@@ -51,19 +51,28 @@ def submit_answer(request, session_id, question_id):
 
         if user_answer == question.correct_option:
             session.correct_answers += 1
-            result = 'correct'
+            # result = question.correct_option
         else:
             session.incorrect_answers += 1
-            result = 'incorrect'
+            # result = 'incorrect'
 
         # Save the session after updating
         session.save()
 
         # Return the result of the answer submission
         return render(request, 'quiz/answer_result.html', {
-            'result': result,
+            'result': user_answer,
             'correct_option': question.correct_option,
-            'session_id': session.id
+            'session_id': session.id,
+            'session_id': session.id,
+            'question_id': question.id,
+            'text': question.text,
+            'options': {
+                'A': question.option_a,
+                'B': question.option_b,
+                'C': question.option_c,
+                'D': question.option_d
+            }
         })
 
     else:

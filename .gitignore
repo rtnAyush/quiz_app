@@ -15,7 +15,7 @@ __pycache__/
 
 # Static files
 staticfiles/
-static/
+# static/
 media/
 
 # IDEs and editors
