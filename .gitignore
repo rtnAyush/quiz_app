@@ -14,9 +14,9 @@ __pycache__/
 *.log
 
 # Static files
-staticfiles/
+# staticfiles/
 # static/
-media/
+# media/
 
 # IDEs and editors
 .vscode/
