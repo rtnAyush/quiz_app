@@ -8,6 +8,31 @@ This is a Django-based quiz application.
 3. Submit answer and
 4. Get the total questions answered by user with details on correct and incorrect submission.
 
+## Demo
+#### 1. Start new quiz session.
+- When you land on home page new session get created
+- You can start test by clicking on the `Start Quiz`
+-  <img src="https://github.com/user-attachments/assets/dffd0f0f-e583-469b-9a07-3c0e5ebac797" alt="Image" width="600">
+- <img src="https://github.com/user-attachments/assets/f0cffa68-5490-48fb-bc17-6514392f3ca9" alt="Home page pop up" width="600">
+
+
+#### 2. Get a random multiple choice question from a set of questions in database
+- Random Question will be displayed
+- <img src="https://github.com/user-attachments/assets/1f0c3387-8193-43c9-afa2-eca3a5d22136" alt="Question image" width="600" >
+- <img src="https://github.com/user-attachments/assets/2df6e9e8-c0a7-4268-a801-3c5f091cb117" alt="Clicked Answer Image" width="600" >
+
+
+#### 3. Submited answer and Result Page
+- Result of the current given answer.
+- You will get two options either get a next random question (will e looped to step 2) or
+- See test summery report (will goto next step)
+- <img src="https://github.com/user-attachments/assets/415c96e8-af15-42ca-a2a8-1edbf5dabf07" alt="Result page" width="600" >
+
+#### 4. Get the total questions answered by user with details on correct and incorrect submission.
+- View test result summary
+- Salutations and emojis are displayed based on percentage scores.
+- <img src="https://github.com/user-attachments/assets/f9a4239e-a353-4677-a30f-1b3f517b7ba6" alt="test summery result" width="600" >
+
 ## Prerequisites
 
 Before you start, ensure you have the following installed on your machine:
